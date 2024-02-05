@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug SPL",
+            "type": "gdb",
+            "request": "launch",
+            "target": "./spl/u-boot-spl",
+            "cwd": "${workspaceRoot}",
+            "gdbpath" : "C:/gcc/bin/arm-none-eabi-gdb.exe",
+            "autorun": [
+            "symbol-file ./spl/u-boot-spl",
+            "set remotetimeout 60",            
+            "target extended-remote :3333",
+            "monitor reset"
+            ],
+            "valuesFormatting": "parseText"
+        }, 
+        {
+            "name": "Debug U-boot",
+            "type": "gdb",
+            "request": "launch",
+            "target": "./u-boot",
+            "cwd": "${workspaceRoot}",
+            "gdbpath" : "C:/gcc/bin/arm-none-eabi-gdb.exe",
+            "autorun": [
+            "symbol-file ./u-boot",
+            "set remotetimeout 60",            
+            "target extended-remote :3333",
+            "monitor reset"
+            ],
+            "valuesFormatting": "parseText"
+        }
+    ]
+}

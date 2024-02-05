@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# Mount data drive
+#
+
+DATA_FOLDER=.epdata
+DOTNET_FOLDER=.epnet
+
+#if [ ! -d /root/$DATA_FOLDER ] 
+#then
+#	mkdir /root/$DATA_FOLDER
+#fi
+
+#if [ ! -d /root/$DOTNET_FOLDER ] 
+#then
+#	mkdir /root/$DOTNET_FOLDER
+#fi
+
+
+
+
+value="$(cat /boot/extlinux/extlinux.conf)"
+
+
+if [[ "$value" == *"mmcblk1"* ]]; 
+then
+	mount /dev/mmcblk1p6 /root/$DOTNET_FOLDER &
+	mount /dev/mmcblk1p7 /root/$DATA_FOLDER &
+	
+      
+else	
+	mount /dev/mmcblk2p6 /root/$DOTNET_FOLDER &
+	mount /dev/mmcblk2p7 /root/$DATA_FOLDER &
+	
+fi
+
+gpioset gpiochip2 0=1 & exit 0

@@ -1,0 +1,105 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause)
+/*
+ * Copyright (C) STMicroelectronics 2019 - All Rights Reserved
+ * Author: Alexandre Torgue <alexandre.torgue@st.com> for STMicroelectronics.
+ */
+
+/dts-v1/;
+
+#include "ep-stm32mp157.dtsi"
+#include "ep-stm32mp15xc.dtsi"
+#include "ep-stm32mp15-pinctrl.dtsi"
+#include "ep-stm32mp15xxac-pinctrl.dtsi"
+#include "ep-stm32mp15xx-dkx.dtsi"
+#include "ep-stm32mp157-spi.dtsi"
+#include "ep-stm32mp157-i2c.dtsi"
+#include "ep-stm32mp157-pwm.dtsi"
+#include "ep-stm32mp157-uart.dtsi"
+#include "ep-stm32mp157-adc.dtsi"
+#include "ep-stm32mp157-can.dtsi"
+#include "ep-stm32mp157-ltdc.dtsi"
+#include "ep-stm32mp157-sdmmc.dtsi"
+#include "ep-stm32mp157-ethernet.dtsi"
+#include "ep-stm32mp157-watchdog.dtsi"
+#include "ep-stm32mp157-dcmi.dtsi"
+
+
+/ {
+	model = "STMicroelectronics STM32MP157C-DK2 Discovery Board";
+	compatible = "st,stm32mp157c-dk2", "st,stm32mp157";
+
+	aliases {
+		ethernet0 = &ethernet0;
+		serial0 = &usart1;
+		serial1 = &usart2;
+		serial2 = &usart3;
+		serial3 = &uart4;
+		serial4 = &uart5;
+		serial5 = &usart6;
+		serial6 = &uart7;
+		serial7 = &uart8;
+		
+	};
+
+	
+	clocks {
+		clk_ext_camera: clk-ext-camera {
+			#clock-cells = <0>;
+			compatible = "fixed-clock";
+			clock-frequency = <8000000>;
+		};
+	};
+	
+	usb_phy_tuning: usb-phy-tuning {
+		st,current-boost = <2>;
+		st,no-lfs-fb-cap;
+		st,hs-dc-level = <2>;
+		st,hs-rftime-reduction;
+		st,hs-current-trim = <5>;
+		st,hs-impedance-trim = <0>;
+		st,squelch-level = <1>;
+		st,no-hs-ftime-ctrl;
+		st,hs-tx-staggering;
+	};
+	
+
+};
+
+&cryp1 {
+	status = "disabled";
+};
+
+
+
+&i2c1 {
+	hdmi-transmitter@39 {
+		status = "disabled";
+	};
+	
+	cs42l51@4a {
+		status = "disabled";
+	};
+	
+	touchscreen@38 {
+		compatible = "focaltech,ft6236";
+		reg = <0x38>;
+		interrupts = <2 2>;
+		interrupt-parent = <&gpiof>;
+		interrupt-controller;
+		touchscreen-size-x = <480>;
+		touchscreen-size-y = <800>;
+		status = "disabled";
+	};
+};
+
+
+&usbotg_hs {
+	dr_mode = "peripheral";
+	force-b-session-valid;
+	phys = <&usbphyc_port1 0>;
+	phy-names = "usb2-phy";
+	status = "okay";
+	
+	/delete-node/ port;
+};
+

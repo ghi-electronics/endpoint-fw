@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause)
+/*
+ * Copyright (C) STMicroelectronics 2017 - All Rights Reserved
+ * Author: Ludovic Barre <ludovic.barre@st.com> for STMicroelectronics.
+ */
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+
+&m_can1 {
+	pinctrl-names = "default";         /* configure pinctrl modes for m_can1 */
+	pinctrl-0 = <>;               /* configure m_can1_pins_a as default pinctrl configuration for m_can1 */	
+	status = "okay";                            /* enable m_can1 */
+
+	can-transceiver {
+		max-bitrate = <1000000>;
+	};
+ };
+ 
+&m_can2 {
+	pinctrl-names = "default";         /* configure pinctrl modes for m_can1 */
+	pinctrl-0 = <>;               /* configure m_can1_pins_a as default pinctrl configuration for m_can1 */	
+	status = "okay";                            /* enable m_can1 */
+
+	can-transceiver {
+		max-bitrate = <1000000>;
+	};
+ };

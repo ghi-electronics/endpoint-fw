@@ -1,0 +1,67 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause)
+/*
+ * Copyright (C) STMicroelectronics 2017 - All Rights Reserved
+ * Author: Ludovic Barre <ludovic.barre@st.com> for STMicroelectronics.
+ */
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+&spi1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <>;
+	cs-gpios = <0>;
+	
+	/* Use PIO Mode */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	
+	status = "okay";			
+ 
+	spidev@0{
+		compatible = "spidev";
+		reg = <0>;
+		spi-max-frequency = <24000000>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+	};
+};
+
+&spi4 {
+	pinctrl-names = "default";
+	pinctrl-0 = <>;
+	cs-gpios = <0>;
+	
+	/* Use PIO Mode */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	
+	status = "okay";			
+ 
+	spidev@0{
+		compatible = "spidev";
+		reg = <0>;
+		spi-max-frequency = <24000000>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+	};
+};
+
+&spi5 {
+	pinctrl-names = "default";
+	pinctrl-0 = <>;
+	cs-gpios = <0>;
+	
+	/* Use PIO Mode */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	
+	status = "okay";			
+ 
+	spidev@0{
+		compatible = "spidev";
+		reg = <0>;
+		spi-max-frequency = <24000000>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+	};
+};
+

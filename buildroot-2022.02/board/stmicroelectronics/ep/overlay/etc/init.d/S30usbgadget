@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# set -e
+
+GADGET_DIR=/config/usb_gadget/g1
+OLDPWD=$(pwd)
+
+printf "Starting USB gadget: "
+
+modprobe libcomposite
+
+usb_idVendor="0x1b9f"
+usb_idProduct="0x0105"
+usb_bcdDevice="0x0100"
+usb_bcdUSB="0x0200"
+usb_serialnr="000000"
+usb_product="USB Device"
+
+usb_iserialnumber="12345678ABCD"
+usb_imanufacturer="GHI Electronics"
+usb_iproduct="Endpoint"
+
+mkdir -p /config	
+mount -t configfs none /config
+mkdir ${GADGET_DIR}
+cd ${GADGET_DIR}
+
+echo ${usb_bcdUSB} > bcdUSB
+echo ${usb_idVendor} > idVendor # GHI VID
+echo ${usb_idProduct} > idProduct # GHI PID
+echo ${usb_bcdDevice} > bcdDevice
+
+#0x409 = english strings...
+mkdir strings/0x409
+
+echo ${usb_iserialnumber} > strings/0x409/serialnumber
+echo ${usb_imanufacturer} > strings/0x409/manufacturer
+echo ${usb_iproduct} > strings/0x409/product
+
+mkdir functions/rndis.usb0
+	
+if [ -f functions/rndis.usb0/class ]; then
+	echo EF > functions/rndis.usb0/class
+	echo 04 > functions/rndis.usb0/subclass
+	echo 01 > functions/rndis.usb0/protocol
+fi
+
+
+echo 1 > os_desc/use
+echo 0xCD > os_desc/b_vendor_code || true
+echo MSFT100 > os_desc/qw_sign
+echo "RNDIS" > functions/rndis.usb0/os_desc/interface.rndis/compatible_id
+echo "5162001" > functions/rndis.usb0/os_desc/interface.rndis/sub_compatible_id
+
+mkdir -p configs/c.1
+ln -s configs/c.1 os_desc
+mkdir -p functions/rndis.usb0/os_desc/interface.rndis/Icons
+echo 2 > functions/rndis.usb0/os_desc/interface.rndis/Icons/type
+echo "%SystemRoot%\\system32\\shell32.dll,-233" > functions/rndis.usb0/os_desc/interface.rndis/Icons/data
+mkdir -p functions/rndis.usb0/os_desc/interface.rndis/Label
+echo 1 > functions/rndis.usb0/os_desc/interface.rndis/Label/type
+echo "Endpoint USB Ethernet" > functions/rndis.usb0/os_desc/interface.rndis/Label/data
+ln -s functions/rndis.usb0 configs/c.1/
+
+ls /sys/class/udc/ > UDC
+
+cd ${OLDPWD}
+

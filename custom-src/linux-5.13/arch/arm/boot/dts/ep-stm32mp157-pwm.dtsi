@@ -1,0 +1,174 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause)
+/*
+ * Copyright (C) STMicroelectronics 2017 - All Rights Reserved
+ * Author: Ludovic Barre <ludovic.barre@st.com> for STMicroelectronics.
+ */
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/*pwm0*/
+&timers2 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm2: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm4*/
+&timers3 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm3: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm8*/
+&timers4 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm4: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm12*/
+&timers5 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm5: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm16*/
+&timers12 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm12: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm18*/
+&timers13 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm13: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm19*/
+&timers14 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm14: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm20*/
+&timers1 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm1 label */
+	pwm1: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm24*/
+&timers8 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm8: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm28*/
+&timers15 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm15: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm30*/
+&timers16 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm16: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
+
+/*pwm31*/
+&timers17 {
+	status = "okay";
+	/* spare all DMA channels since they are not needed for PWM output */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* define pwm2 label */
+	pwm17: pwm {		
+		pinctrl-0 = <>;		
+		pinctrl-names = "default";		
+		status = "okay";
+	};	
+};
